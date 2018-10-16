@@ -43,3 +43,29 @@ for ($x = 0; $x < 6; $x++) {
     $fullStar += 2;
     echo '<br />';
 }
+
+/**
+ * Afficher les tables de multiplication de 0 à 10
+ */
+echo '-------------- <br /><br />';
+
+echo '<table align="center" border="1" style="border-collapse: collapse">';
+// Légende du tableau (1ére ligne)
+echo '<tr> <td align="center" style="width: 20px; background-color: grey">x</td>';
+for ($z = 0; $z <= 10; $z++) {
+    $color = ($z % 2) ? 'grey' : 'lightgrey';
+    echo '<td align="center" style="width: 20px; background-color: '.$color.'">'.$z.'</td>';
+}
+echo '</tr>';
+
+for ($y = 0; $y <= 10; $y++) {
+    $color = ($y % 2) ? 'grey' : 'lightgrey';
+    $r = ($color === 'grey') ? 1 : 0;
+    echo '<tr> <td align="center" style="width: 20px; background-color: '.$color.'">'.$y.'</td>';
+    for ($x = 0; $x <= 10; $x++) {
+        $color = ($x % 2 === $r) ? 'grey' : 'lightgrey';
+        echo '<td align="center" style="width: 20px; background-color: '.$color.'"">'.$x * $y.'</td>';
+    }
+    echo '</tr>';
+}
+echo '</table>';
