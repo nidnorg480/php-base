@@ -7,11 +7,11 @@ $eleves = [
     ],
     1 => [
         'nom' => 'Thomas',
-        'notes' => [4, 18, 12, 15, 13, 7]
+        'notes' => [4, 18, 20, 15, 13, 7]
     ],
     2 => [
         'nom' => 'Jean',
-        'notes' => [17, 14, 6, 2, 16, 18, 9]
+        'notes' => [17, 14, 6, 2, 16, 10, 9]
     ],
     3 => [
         'nom' => 'Enzo',
@@ -19,11 +19,11 @@ $eleves = [
     ]
 ];
 
-echo $eleves[2]['nom']; // Affiche "Jean"
-echo $eleves[2]['notes'][2]; // Récupère la 3ème note de Jean (6)
-echo '<br /><br />';
+// echo $eleves[2]['nom']; // Affiche "Jean"
+// echo $eleves[2]['notes'][2]; // Récupère la 3ème note de Jean (6)
+// echo '<br /><br />';
 
-/* 1/ Afficher la liste de tous les éléves avec leurs notes. */
+echo '<h2>1/ Afficher la liste de tous les éléves avec leurs notes.</h2>';
 foreach ($eleves as $eleve) {
     echo $eleve['nom'] . ' a eu ';
 
@@ -47,8 +47,8 @@ foreach ($eleves as $eleve) {
     echo '<br />';
 }
 
-/* 2/ Calculer la moyenne de Jean. On part de $eleves[2]['notes']
-La fonction count permet de compter les éléments d'un tableau */
+echo '<h2>2/ Calculer la moyenne de Jean. On part de $eleves[2][\'notes\']</h2>';
+/* La fonction count permet de compter les éléments d'un tableau */
 $jeanNotes = $eleves[2]['notes']; // [5, 8, 9, 10]
 
 $sum = 0;
@@ -62,11 +62,11 @@ foreach ($jeanNotes as $note) {
 
 // Moyenne
 echo round($sum / $notesCount, 2) . '<br />'; // Arrondi à 2 décimales
-echo array_sum($jeanNotes) / $notesCount . '<br />';
+// echo array_sum($jeanNotes) / $notesCount . '<br />';
 
 
-/* 3/ Combien d'élèves ont la moyenne ?
-Exemple :
+echo '<h2>3/ Combien d\'élèves ont la moyenne ?</h2>';
+/* Exemple :
 Matthieu a la moyenne
 Jean n'a pas la moyenne
 Thomas a la moyenne
@@ -86,8 +86,8 @@ foreach ($eleves as $eleve) {
 }
 echo 'Nombre d\'éléves avec la moyenne : '.$countAverage;
 
-/* 4/ Quel(s) éléve(s) a(ont) la meilleure note ?
-Exemple: Thomas a la meilleure note : 19 */
+echo '<h2>4/ Quel(s) éléve(s) a(ont) la meilleure note ?</h2>';
+/* Exemple: Thomas a la meilleure note : 19 */
 
 $bestNote = 0;
 
@@ -99,7 +99,7 @@ foreach ($eleves as $eleve) {
     }
 }
 
-var_dump($bestNote);
+// var_dump($bestNote);
 foreach ($eleves as $eleve) {
     foreach ($eleve['notes'] as $note) {
         if ($note === $bestNote) {
@@ -109,9 +109,32 @@ foreach ($eleves as $eleve) {
     }
 }
 
-/* 5/ Qui a eu au moins un 20 ?
-Exemple: Personne n'a eu 20
+echo '<h2>5/ Qui a eu au moins un 20 ?</h2>';
+/* Exemple: Personne n'a eu 20
          Quelqu'un a eu 20 */
+$isTwenty = false;
+
+foreach ($eleves as $eleve) {
+    if ($eleve['nom'] === 'Thomas') {
+        continue; // On passe à l'élève suivant si c'est Thomas
+    }
+
+    foreach ($eleve['notes'] as $note) {
+        if (20 === $note) {
+            $isTwenty = true;
+            break 2;
+            var_dump('ici');
+        }
+    }
+    // break;
+    var_dump('là');
+}
+
+if ($isTwenty) {
+    echo 'Quelqu\'un a eu 20';
+} else {
+    echo 'Personne n\'a eu 20';
+}
 
 /* 6/ BONUS Tri à bulles
 $notes = [4, 25, 1, 36, 24]; => [1, 4, 24, 25, 36];
