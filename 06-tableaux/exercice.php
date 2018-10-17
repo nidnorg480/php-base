@@ -15,7 +15,7 @@ $eleves = [
     ],
     3 => [
         'nom' => 'Enzo',
-        'notes' => [1, 14, 6, 2, 1, 8, 9]
+        'notes' => [1, 14, 19, 2, 1, 8, 19]
     ]
 ];
 
@@ -62,7 +62,7 @@ foreach ($jeanNotes as $note) {
 
 // Moyenne
 echo round($sum / $notesCount, 2) . '<br />'; // Arrondi à 2 décimales
-echo array_sum($jeanNotes) / $notesCount;
+echo array_sum($jeanNotes) / $notesCount . '<br />';
 
 
 /* 3/ Combien d'élèves ont la moyenne ?
@@ -85,6 +85,51 @@ foreach ($eleves as $eleve) {
     }
 }
 echo 'Nombre d\'éléves avec la moyenne : '.$countAverage;
+
+/* 4/ Quel(s) éléve(s) a(ont) la meilleure note ?
+Exemple: Thomas a la meilleure note : 19 */
+
+$bestNote = 0;
+
+foreach ($eleves as $eleve) {
+    foreach ($eleve['notes'] as $note) {
+        if ($note > $bestNote) {
+            $bestNote = $note;
+        }
+    }
+}
+
+var_dump($bestNote);
+foreach ($eleves as $eleve) {
+    foreach ($eleve['notes'] as $note) {
+        if ($note === $bestNote) {
+            echo $eleve['nom'] . ' a la meilleure note : ' . $bestNote . '<br />';
+            break; // Arrête les itérations sur la boucle
+        }
+    }
+}
+
+/* 5/ Qui a eu au moins un 20 ?
+Exemple: Personne n'a eu 20
+         Quelqu'un a eu 20 */
+
+/* 6/ BONUS Tri à bulles
+$notes = [4, 25, 1, 36, 24]; => [1, 4, 24, 25, 36];
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
