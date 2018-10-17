@@ -13,3 +13,15 @@ echo ($seconds > 1) ? 's' : '';
 
 var_dump(date('d/m/Y', time()));
 var_dump(date('d/m/Y', strtotime('+ 10 days')));
+
+
+// Dans combien de jours est Noël ?
+$currentTimestamp = time();
+$targetTimestamp = strtotime('25 December 2018');
+
+// Conversion des secondes en jours
+$total = ($targetTimestamp - $currentTimestamp) / 60 / 60 / 24;
+$days = round($total);
+$hours = ($total - $days) * 24;
+echo $days. ' jours et ';
+echo $hours . ' heures';
