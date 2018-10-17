@@ -2,8 +2,8 @@
 
 $eleves = [
     0 => [
-        'nom' => 'Matthieu',
-        'notes' => [10, 8, 16, 20, 17, 16, 15, 2]
+        'nom' => 'Toto',
+        'notes' => [10, 8, 6, 2, 1, 1, 15, 2]
     ],
     1 => [
         'nom' => 'Thomas',
@@ -47,17 +47,44 @@ foreach ($eleves as $eleve) {
     echo '<br />';
 }
 
+/* 2/ Calculer la moyenne de Jean. On part de $eleves[2]['notes']
+La fonction count permet de compter les éléments d'un tableau */
+$jeanNotes = $eleves[2]['notes']; // [5, 8, 9, 10]
+
+$sum = 0;
+// Nombre de notes
+$notesCount = count($jeanNotes);
+
+// Faire la somme des notes
+foreach ($jeanNotes as $note) {
+    $sum += $note;
+}
+
+// Moyenne
+echo round($sum / $notesCount, 2) . '<br />'; // Arrondi à 2 décimales
+echo array_sum($jeanNotes) / $notesCount;
 
 
+/* 3/ Combien d'élèves ont la moyenne ?
+Exemple :
+Matthieu a la moyenne
+Jean n'a pas la moyenne
+Thomas a la moyenne
+Nombre d'éléves avec la moyenne : 2 */
+$countAverage = 0;
+foreach ($eleves as $eleve) {
+    $average = array_sum($eleve['notes']) / count($eleve['notes']);
+    echo $eleve['nom'];
 
-
-
-
-
-
-
-
-
+    if ($average >= 10) {
+        echo ' a la moyenne <br />';
+        // Permet de compter le nombre d'élèves qui ont la moyenne
+        $countAverage++;
+    } else {
+        echo ' n\'a pas la moyenne <br />';
+    }
+}
+echo 'Nombre d\'éléves avec la moyenne : '.$countAverage;
 
 
 
