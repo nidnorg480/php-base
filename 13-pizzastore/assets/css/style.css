@@ -5,8 +5,15 @@
     border-bottom: 2px solid #e8e8e8;
 }
 
+.card-title {
+	font-family: 'Charmonman';
+    font-weight: bold;
+    font-size: 28px;
+}
+
 .card-img-top-container {
 	overflow: hidden;
+	position: relative;
 }
 
 .card-img-top-zoom-effect {
@@ -16,4 +23,32 @@
 .card-img-top-zoom-effect:hover {
 	cursor: pointer;
 	transform: scale(1.1);
+}
+
+.card-price {
+	position: absolute;
+    right: 15px;
+    bottom: 15px;
+
+    width: 90px;
+    height: 40px;
+    line-height: 40px;
+
+    text-align: center;
+
+    font-size: 26px;
+    font-weight: bold;
+    font-family: 'Charmonman';
+
+    background-color: rgba(220, 53, 69, 0.8);
+    color: #ffffff;
+    border-radius: 10px;
+}
+
+.card-price:hover {
+	user-select: none;
+}
+
+.card-price-cents {
+	font-size: 18px;
 }
