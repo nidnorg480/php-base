@@ -1,4 +1,6 @@
 <?php
+  // Inclusion du fichier functions
+  require_once(__DIR__.'/../config/functions.php');
   // Inclusion du fichier config
   require_once(__DIR__.'/../config/config.php');
   // Inclusion du fichier database
@@ -23,6 +25,8 @@
         }
       ?>
     </title>
+
+    <link href="https://fonts.googleapis.com/css?family=Charmonman:400,700" rel="stylesheet">
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
