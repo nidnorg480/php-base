@@ -1,0 +1,19 @@
+.page-title {
+	margin-top: 30px;
+    margin-bottom: 40px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e8e8e8;
+}
+
+.card-img-top-container {
+	overflow: hidden;
+}
+
+.card-img-top-zoom-effect {
+	transition: 0.5s;
+}
+
+.card-img-top-zoom-effect:hover {
+	cursor: pointer;
+	transform: scale(1.1);
+}
