@@ -49,11 +49,13 @@ if (!empty($_POST)) {
     // S'il n'y a pas d'erreurs dans le formulaire
     if (empty($errors)) {
         $query = $db->prepare('
-            INSERT INTO pizza (`name`, `price`, `image`) VALUES (:name, :price, :image)
+            INSERT INTO pizza (`name`, `price`, `image`, `category`, `description`) VALUES (:name, :price, :image, :category, :description)
         ');
         $query->bindValue(':name', $name, PDO::PARAM_STR);
         $query->bindValue(':price', $price, PDO::PARAM_STR);
         $query->bindValue(':image', $image, PDO::PARAM_STR);
+        $query->bindValue(':category', $category, PDO::PARAM_STR);
+        $query->bindValue(':description', $description, PDO::PARAM_STR);
 
         if ($query->execute()) { // On insère la pizza dans la BDD
             $success = true;
