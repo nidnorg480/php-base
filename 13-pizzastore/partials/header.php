@@ -51,6 +51,9 @@
           <li class="nav-item <?= ($currentPageUrl === 'pizza_list') ? 'active' : ''; ?>">
             <a class="nav-link" href="pizza_list.php">Liste des pizzas</a>
           </li>
+          <li class="nav-item <?= ($currentPageUrl === 'pizza_add') ? 'active' : ''; ?>">
+            <a class="nav-link" href="pizza_add.php">Ajouter une pizza</a>
+          </li>
         </ul>
       </div>
     </nav>
