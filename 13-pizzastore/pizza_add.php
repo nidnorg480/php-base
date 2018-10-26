@@ -38,11 +38,11 @@ if (!empty($_POST)) {
         $errors['image'] = 'L\'image n\'est pas valide';
     }
     // Vérifier la catégorie
-    if (empty($category)) {
+    if (empty($category) || !in_array($category, ['Classique', 'Spicy', 'Hot', 'Végétarienne'])) {
         $errors['category'] = 'La catégorie n\'est pas valide';
     }
     // Vérifier la description
-    if (empty($description)) {
+    if (strlen($description) < 10) {
         $errors['description'] = 'La description n\'est pas valide';
     }
 
@@ -111,7 +111,13 @@ if (!empty($_POST)) {
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="category">Catégorie :</label>
-                    <input type="text" name="category" id="category" class="form-control <?php echo isset($errors['category']) ? 'is-invalid' : null; ?>" value="<?php echo $category; ?>">
+                    <select name="category" id="category" class="form-control <?php echo isset($errors['category']) ? 'is-invalid' : null; ?>">
+                        <option value="">Choisir la catégorie</option>
+                        <option <?php echo ($category === 'Classique') ? 'selected' : ''; ?> value="Classique">Classique</option>
+                        <option <?php echo ($category === 'Spicy') ? 'selected' : ''; ?> value="Spicy">Spicy</option>
+                        <option <?php echo ($category === 'Hot') ? 'selected' : ''; ?> value="Hot">Hot</option>
+                        <option <?php echo ($category === 'Végétarienne') ? 'selected' : ''; ?> value="Végétarienne">Végétarienne</option>
+                    </select>
                     <?php if (isset($errors['category'])) {
                         echo '<div class="invalid-feedback">';
                             echo $errors['category'];
