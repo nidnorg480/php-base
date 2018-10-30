@@ -1,3 +1,13 @@
+<?php
+  // Inclusion du fichier functions
+  // require_once(__DIR__.'/../config/functions.php');
+  require_once(__DIR__.'/../functions/common.php');
+  // Inclusion du fichier config
+  // require_once(__DIR__.'/../config/config.php');
+  // Inclusion du fichier database
+  require_once(__DIR__.'/../config/database.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
