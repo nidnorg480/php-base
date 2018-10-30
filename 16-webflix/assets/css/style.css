@@ -1,0 +1,11 @@
+.navbar-brand {
+    color: #000000;
+}
+
+.navbar-brand:hover {
+    color: #000000;
+}
+
+.card-body {
+    display: none;
+}
