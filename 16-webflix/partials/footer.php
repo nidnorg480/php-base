@@ -5,12 +5,12 @@
                         <h5 class="mb-2">Webflix</h5>
                         <small class="d-block mb-3 text-muted">&copy; <?= date('Y'); ?></small>
                     </div>
-                    <?php foreach (range(1, 3) as $footer) { ?>
+                    <?php foreach (getRandomCategories() as $category) { ?>
                         <div class="col-6 col-md">
-                            <h5>Footer <?= $footer; ?></h5>
+                            <h5><?= $category['name']; ?></h5>
                             <ul class="list-unstyled text-small">
-                                <?php foreach (range(1, 5) as $link) { ?>
-                                <li><a class="text-muted" href="#">Lien <?= $link; ?></a></li>
+                                <?php foreach (getMovies($category['id'], 4) as $movie) { ?>
+                                <li><a class="text-muted" href="movie_single.php?id=<?= $movie['id']; ?>"><?= $movie['title']; ?></a></li>
                                 <?php } ?>
                             </ul>
                         </div>

@@ -22,6 +22,8 @@ function httpNotFound()
 {
 	http_response_code(404);
 	echo '<div class="container"><h1>404</h1></div>';
+	require_once(__DIR__.'/../partials/footer.php');
+	die();
 }
 
 /**
@@ -72,4 +74,16 @@ function isValidDate($date)
 function isLogged()
 {
 	return $_SESSION['user'] ?? false;
+}
+
+/**
+ * Generate a slug from URL.
+ * Example : The Amazing Spider-Man = the-amazing-spider-man
+ */
+function slug($string)
+{
+	$slug = strtolower($string);
+	$slug = str_replace(' ', '-', $slug);
+
+	return $slug;
 }
