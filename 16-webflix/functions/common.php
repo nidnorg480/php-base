@@ -16,6 +16,15 @@ function redirect($page)
 }
 
 /**
+ * We need to redirect user sometimes.
+ */
+function httpNotFound()
+{
+	http_response_code(404);
+	echo '<div class="container"><h1>404</h1></div>';
+}
+
+/**
  * We need to know if a form is submitted.
  */
 function isSubmit()

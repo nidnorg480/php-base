@@ -38,6 +38,22 @@ function getMovies($category_id = null)
 }
 
 /**
+ * We need to retrive a movie from database.
+ */
+function getMovie($movie_id)
+{
+	global $db;
+
+	$sql = 'SELECT * FROM movie WHERE id = :id';
+	$query = $db->prepare($sql);
+	$query->bindValue(':id', $movie_id);
+	$query->execute();
+	$movie = $query->fetch();
+
+	return $movie;
+}
+
+/**
  * Add a movie in database.
  */
 function addMovie($title, $description, $video_link, $cover, $released_at, $category)
