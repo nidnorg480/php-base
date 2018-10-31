@@ -32,6 +32,32 @@ function isValidEmail($email)
 }
 
 /**
+ * We need to know if a date is valid.
+ */
+function isValidDate($date)
+{
+	preg_match('/(\d*)\-(\d*)\-(\d*)/', $date, $matches);
+
+	if (empty($matches) || count($matches) !== 4) {
+		return false;
+	}
+
+	$year = (int) $matches[1];
+	$month = (int) $matches[2];
+	$day = (int) $matches[3];
+
+	if (
+		$year < 1900 ||
+		($month < 1 || $month > 12) ||
+		($day < 1 || $day > 31)
+	) {
+		return false;
+	}
+
+	return $matches;
+}
+
+/**
  * We can check if an user is logged.
  */
 function isLogged()
