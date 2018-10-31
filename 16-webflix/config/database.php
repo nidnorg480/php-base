@@ -14,6 +14,6 @@ try {
 	// Redirection en PHP vers Google avec le message d'erreur concerné
 	// header('Location: https://www.google.fr/search?q='.$e->getMessage());
 	echo '<img src="assets/img/confused-travolta.gif">';
-	die('Stop'); // Arrête le script si la base de données n'est pas dispo
+	die(); // Arrête le script si la base de données n'est pas dispo
 }
 
