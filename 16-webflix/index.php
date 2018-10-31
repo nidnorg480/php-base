@@ -1,7 +1,4 @@
 <?php
-// We need a amazing movie helper
-require_once(__DIR__.'/functions/movie.php');
-
 // Le fichier header.php est inclus sur la page
 require_once(__DIR__.'/partials/header.php');
 
@@ -24,19 +21,25 @@ $categories = getCategories();
                 <h2 class="display-4"><?= $category['name']; ?></h2>
                 <div class="row">
                     <?php foreach ($movies as $movie) { ?>
+
                         <div class="col-md-3">
                             <div class="card mb-4 shadow-sm">
-                                <a href="movie_single.php?id=<?= $movie['id']; ?>"><img class="card-img-top" src="assets/img/<?= $movie['cover']; ?>" alt="<?= $movie['title']; ?>"></a>
+                                <a href="movie_single.php?id=<?= $movie['id']; ?>">
+                                    <div class="background-movie" style="background-image: url(assets/img/<?= $movie['cover']; ?>)"></div>
+                                    <img style="display: none" class="card-img-top" src="assets/img/<?= $movie['cover']; ?>" alt="<?= $movie['title']; ?>">
+                                </a>
+
                                 <?php if ($user = isLogged()) { ?>
                                     <div class="card-body">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-secondary">Modifier</button>
-                                            <button type="button" class="btn btn-sm btn-outline-danger">Supprimer</button>
+                                            <a href="movie_edit.php?id=<?= $movie['id']; ?>" class="btn btn-sm btn-outline-secondary">Modifier</a>
+                                            <a href="movie_delete.php?id=<?= $movie['id']; ?>" class="btn btn-sm btn-outline-danger">Supprimer</a>
                                         </div>
                                     </div>
                                 <?php } ?>
                             </div>
                         </div>
+
                     <?php } ?>
                 </div>
             <?php } ?>

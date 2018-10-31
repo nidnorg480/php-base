@@ -1,8 +1,5 @@
 <?php
 
-// We need a amazing movie helper
-require_once(__DIR__.'/functions/movie.php');
-
 // Le fichier header.php est inclus sur la page
 require_once(__DIR__.'/partials/header.php');
 
@@ -40,7 +37,7 @@ if (isSubmit()) {
     }
 
     if (empty($errors)) {
-    	if (addMovie($title, $description, $video_link, '', $released_at, $category)) {
+    	if (addMovie($title, $description, $video_link, slug($title).'.jpg', $released_at, $category)) {
     		redirect('.');
     	}
     }
@@ -111,4 +108,3 @@ if (isSubmit()) {
 <?php
 // Le fichier footer.php est inclus sur la page
 require_once(__DIR__.'/partials/footer.php'); ?>
-
