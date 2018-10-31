@@ -1,9 +1,9 @@
 <?php
-// Le fichier header.php est inclus sur la page
-require_once(__DIR__.'/partials/header.php');
-
 // We need a amazing user helper
 require_once(__DIR__.'/functions/user.php');
+
+// Le fichier header.php est inclus sur la page
+require_once(__DIR__.'/partials/header.php');
 
 $email = $success = null;
 
