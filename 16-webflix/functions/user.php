@@ -17,6 +17,9 @@ function emailExists($email)
     $query->bindValue(':email', $email, PDO::PARAM_STR);
     $query->execute();
 
+    // fetch -> ['COUNT(id)' => 1];
+    // fetchColumn -> 1
+
     return (int) $query->fetchColumn();
 }
 
@@ -80,3 +83,15 @@ function logout()
 
 	return true;
 }
+
+
+
+
+
+
+
+
+
+
+
+

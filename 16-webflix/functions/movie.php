@@ -7,10 +7,9 @@ function getCategories()
 {
 	global $db;
 
-	$query = $db->query('SELECT * FROM category');
-	$categories = $query->fetchAll();
+	$query = $db->query('SELECT * FROM category ORDER BY name');
 
-	return $categories;
+	return $query->fetchAll();
 }
 
 /**
@@ -27,7 +26,7 @@ function getRandomCategories()
 }
 
 /**
- * We need to retrive movies from database.
+ * We need to retrieve movies from database.
  * @param int $category_id A category id
  *
  * @return array
@@ -41,6 +40,8 @@ function getMovies($category_id = null, $limit = null)
 	if (null !== $category_id) {
 		$sql .= ' WHERE category_id = :category_id';
 	}
+
+	$sql .= ' ORDER BY title';
 
 	if (is_numeric($limit)) {
 		$sql .= ' LIMIT :limit';

@@ -25,8 +25,8 @@ $categories = getCategories();
                         <div class="col-md-3">
                             <div class="card mb-4 shadow-sm">
                                 <a href="movie_single.php?id=<?= $movie['id']; ?>">
-                                    <div class="background-movie" style="background-image: url(assets/img/<?= $movie['cover']; ?>)"></div>
-                                    <img style="display: none" class="card-img-top" src="assets/img/<?= $movie['cover']; ?>" alt="<?= $movie['title']; ?>">
+                                    <div class="background-movie" style="background-image: url(assets/img/movies/<?= $movie['cover']; ?>)"></div>
+                                    <img style="display: none" class="card-img-top" src="assets/img/movies/<?= $movie['cover']; ?>" alt="<?= $movie['title']; ?>">
                                 </a>
 
                                 <?php if ($user = isLogged()) { ?>

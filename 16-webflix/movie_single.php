@@ -18,7 +18,7 @@ if (!$movie) {
         <div class="container">
         	<div class="row">
         		<div class="col-md-6">
-        			<img class="img-fluid" src="assets/img/<?= $movie['cover']; ?>" alt="<?= $movie['title']; ?>">
+        			<img class="img-fluid" src="assets/img/movies/<?= $movie['cover']; ?>" alt="<?= $movie['title']; ?>">
         		</div>
         		<div class="col-md-6">
         			<div>

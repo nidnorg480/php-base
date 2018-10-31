@@ -73,7 +73,8 @@ function isValidDate($date)
  */
 function isLogged()
 {
-	return $_SESSION['user'] ?? false;
+	// return $_SESSION['user'] ?? false;
+	return isset($_SESSION['user']) ? $_SESSION['user'] : false;
 }
 
 /**
@@ -86,4 +87,21 @@ function slug($string)
 	$slug = str_replace(' ', '-', $slug);
 
 	return $slug;
+}
+
+/**
+ * I need a function to facilitate upload...
+ */
+function upload($file, $folder, $name)
+{
+	$fileTmp = $file['tmp_name'];
+	$extension = pathinfo($file['name'])['extension'];
+	$fileName = $name.'.'.$extension;
+	$destination = $folder.'/'.$fileName;
+
+	if (move_uploaded_file($fileTmp, $destination)) {
+		return $fileName;
+	}
+
+	return false;
 }

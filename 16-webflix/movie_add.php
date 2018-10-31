@@ -9,10 +9,14 @@ $id_categories = array_map(function ($category) {
 	return $category['id'];
 }, $categories);
 
+// [[infocategory...]] => [1, 2, 4]
+
 if (isSubmit()) {
 	foreach ($_POST as $variable => $value) {
 		$$variable = $value;
 	}
+
+    $cover = $_FILES['cover'];
 
     $errors = [];
 
@@ -36,8 +40,18 @@ if (isSubmit()) {
     	$errors['category'] = 'La catégorie n\'existe pas';
     }
 
+    if (4 === $cover['error']) {
+        $errors['cover'] = 'Il faut une jaquette.';
+    }
+
+    $cover = upload(
+        $cover,
+        __DIR__.'/assets/img/movies',
+        slug($title)
+    );
+
     if (empty($errors)) {
-    	if (addMovie($title, $description, $video_link, slug($title).'.jpg', $released_at, $category)) {
+    	if (addMovie($title, $description, $video_link, $cover, $released_at, $category)) {
     		redirect('.');
     	}
     }
@@ -52,7 +66,7 @@ if (isSubmit()) {
     <div class="container">
         <div class="row">
             <div class="offset-3 col-md-6">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="title">Titre</label>
                         <input class="form-control <?php echo isset($errors['title']) ? 'is-invalid' : null; ?>" type="text" name="title" value="<?php echo $title; ?>">

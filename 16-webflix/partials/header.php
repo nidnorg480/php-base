@@ -32,9 +32,11 @@
         <h5 class="my-0 mr-md-auto font-weight-normal">
             <a class="navbar-brand" href=".">Webflix</a>
         </h5>
-        <nav class="my-2 my-md-0 mr-md-auto">
-          <a class="p-2 text-dark" href="movie_add.php">Ajouter un film</a>
-        </nav>
+        <?php if ($user) { ?>
+          <nav class="my-2 my-md-0 mr-md-auto">
+            <a class="p-2 text-dark" href="movie_add.php">Ajouter un film</a>
+          </nav>
+        <?php } ?>
         <nav class="my-2 my-md-0 mr-md-3">
             <a class="p-2 text-dark" href="#">Catalogue</a>
             <a class="p-2 text-dark" href="#">Tarifs</a>
