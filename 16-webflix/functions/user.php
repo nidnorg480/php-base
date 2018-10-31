@@ -38,15 +38,45 @@ function registerUser($email, $password)
 }
 
 /**
- * We need to easily login an user on application.
+ * We need to easily valid an user / password on application.
  */
-function loginUser($email, $password)
+function validUser($email, $password)
 {
 	global $db;
 
 	$query = $db->prepare('
-		SELECT COUNT(id) FROM `user` WHERE email = :email AND password = :password
+		SELECT * FROM `user` WHERE email = :email
 	');
+	$query->bindValue(':email', $email);
+	$query->execute();
+
+	$user = $query->fetch();
+
+	if ($user && password_verify($password, $user['password'])) {
+		return $user;
+	}
+
+	return false;
+}
+
+/**
+ * We can log an user in application.
+ */
+function login($user)
+{
+	if (!isset($user['id'])) {
+		return false;
+	}
+
+	$_SESSION['user'] = $user;
+}
+
+/**
+ * We can logout an user in application.
+ */
+function logout()
+{
+	unset($_SESSION['user']);
 
 	return true;
 }

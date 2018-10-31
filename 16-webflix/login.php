@@ -13,7 +13,16 @@ if (isSubmit()) {
 
     $errors = [];
 
-    var_dump(loginUser($email, $password));
+    $user = validUser($email, $password);
+
+    if ($user) {
+        login($user);
+        redirect('.');
+    }
+
+    if (!$user) {
+        $errors['email'] = 'Erreur d\'authentification';
+    }
 }
 
 ?>
@@ -28,7 +37,10 @@ if (isSubmit()) {
                 <form method="POST">
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input class="form-control" type="email" name="email">
+                        <input class="form-control <?php echo isset($errors['email']) ? 'is-invalid' : null; ?>" type="email" name="email" value="<?php echo $email; ?>">
+                        <?php if (isset($errors['email'])) { ?>
+                            <div class="invalid-feedback"><?php echo $errors['email']; ?></div>
+                        <?php } ?>
                     </div>
                     <div class="form-group">
                         <label for="password">Mot de passe</label>

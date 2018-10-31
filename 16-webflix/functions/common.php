@@ -30,3 +30,11 @@ function isValidEmail($email)
 {
 	return false !== filter_var($email, FILTER_VALIDATE_EMAIL);
 }
+
+/**
+ * We can check if an user is logged.
+ */
+function isLogged()
+{
+	return $_SESSION['user'] ?? false;
+}
